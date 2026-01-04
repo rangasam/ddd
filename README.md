@@ -46,7 +46,7 @@ PHPMYADMIN_PORT=8081
 ### 3. Start the Services
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 This command will:
@@ -84,13 +84,13 @@ make help
 ### Starting the Environment
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 ### Stopping the Environment
 
 ```bash
-docker-compose down
+docker compose down
 ```
 
 ### Stopping and Removing All Data
@@ -98,25 +98,25 @@ docker-compose down
 **Warning**: This will delete all data including the database!
 
 ```bash
-docker-compose down -v
+docker compose down -v
 ```
 
 ### Viewing Logs
 
 ```bash
 # All services
-docker-compose logs -f
+docker compose logs -f
 
 # Specific service
-docker-compose logs -f wordpress
-docker-compose logs -f db
-docker-compose logs -f phpmyadmin
+docker compose logs -f wordpress
+docker compose logs -f db
+docker compose logs -f phpmyadmin
 ```
 
 ### Restarting Services
 
 ```bash
-docker-compose restart
+docker compose restart
 ```
 
 ## WordPress Installation
@@ -208,7 +208,7 @@ PHPMYADMIN_PORT=9001
 Ensure the database container is fully started before WordPress attempts to connect:
 
 ```bash
-docker-compose logs db
+docker compose logs db
 ```
 
 ### Reset Everything
@@ -216,9 +216,9 @@ docker-compose logs db
 To start fresh:
 
 ```bash
-docker-compose down -v
+docker compose down -v
 rm -rf wp-content/
-docker-compose up -d
+docker compose up -d
 ```
 
 ## Backup and Restore
@@ -226,13 +226,13 @@ docker-compose up -d
 ### Backup Database
 
 ```bash
-docker exec ddd_mysql mysqldump -u wordpress -pwordpress wordpress > backup.sql
+docker exec -e MYSQL_PWD=wordpress ddd_mysql mysqldump -u wordpress wordpress > backup.sql
 ```
 
 ### Restore Database
 
 ```bash
-docker exec -i ddd_mysql mysql -u wordpress -pwordpress wordpress < backup.sql
+docker exec -i -e MYSQL_PWD=wordpress ddd_mysql mysql -u wordpress wordpress < backup.sql
 ```
 
 ### Backup WordPress Files
