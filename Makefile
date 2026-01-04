@@ -64,7 +64,7 @@ clean:
 backup:
 	@mkdir -p backups
 	@echo "Creating database backup..."
-	@docker exec ddd_mysql mysqldump -u wordpress -pwordpress wordpress > backups/backup-$$(date +%Y%m%d-%H%M%S).sql
+	@docker exec -e MYSQL_PWD=wordpress ddd_mysql mysqldump -u wordpress wordpress > backups/backup-$$(date +%Y%m%d-%H%M%S).sql
 	@echo "✅ Backup created in backups/"
 
 # Restore database
@@ -74,7 +74,7 @@ restore:
 		exit 1; \
 	fi
 	@echo "Restoring database from $(FILE)..."
-	@docker exec -i ddd_mysql mysql -u wordpress -pwordpress wordpress < $(FILE)
+	@docker exec -i -e MYSQL_PWD=wordpress ddd_mysql mysql -u wordpress wordpress < $(FILE)
 	@echo "✅ Database restored"
 
 # Open shell in WordPress container
@@ -83,7 +83,7 @@ shell-wp:
 
 # Open MySQL shell
 shell-db:
-	docker exec -it ddd_mysql mysql -u wordpress -pwordpress wordpress
+	docker exec -it -e MYSQL_PWD=wordpress ddd_mysql mysql -u wordpress wordpress
 
 # Show container status
 status:
