@@ -1,0 +1,46 @@
+# Un-comment the version field if you get an 'unsupported Compose file version: 1.0' ERROR
+
+#version: '3.8'
+networks:
+  counter-net:
+    driver: overlay
+    driver_opts:
+      encrypted: 'yes'
+volumes:
+  counter-vol:
+
+services:
+  web-fe:
+    image: nigelpoulton/ddd2023:stack2023
+    command: python app.py
+    deploy:
+      replicas: 4
+      update_config:
+        parallelism: 2
+        delay: 10s
+        failure_action: rollback
+      placement:
+        constraints:
+          - 'node.role == worker'
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    networks:
+      - counter-net
+    ports:
+      - published: 5001
+        target: 8080
+  redis:
+    image: "redis:alpine"
+    deploy:
+      placement:
+        constraints:
+          - 'node.role == worker'
+    networks:
+      - counter-net
+    volumes:
+      - type: volume
+        source: counter-vol
+        target: /data
