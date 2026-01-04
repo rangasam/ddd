@@ -11,7 +11,7 @@ volumes:
 
 services:
   web-fe:
-    image: nigelpoulton/ddd2023:stack2023
+    image: rangasam/ddd:stack2023
     command: python app.py
     deploy:
       replicas: 4

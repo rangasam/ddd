@@ -4,6 +4,6 @@ Flask app that counts page refreshes in Redis backend and displays the name of t
 **Used in:**
 - Docker Deep Dive video training course (2023 edition)
 
-**Pre-built image:** [](https://hub.docker.com/repository/docker/nigelpoulton/ddd2023/) **tag:** `stack2023`
+**Pre-built image:** [Docker Hub](https://hub.docker.com/repository/docker/rangasam/ddd) **tag:** `stack2023`
 
 

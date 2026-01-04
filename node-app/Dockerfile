@@ -2,7 +2,7 @@
 # Linux x64
 FROM alpine:3.16
 
-LABEL maintainer="nigelpoulton@hotmail.com"
+LABEL maintainer="rangasam@hotmail.com"
 
 # Install Node and NPM
 RUN apk add --update nodejs npm curl

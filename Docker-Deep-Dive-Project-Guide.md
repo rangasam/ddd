@@ -1,11 +1,3 @@
-# README
-
-Files and app code used in the 2023 edition of PS Docker Deep Dive course.
-
-**The apps are maintained approximately once per year so may contain vulnerabilities.**
-
----
-
 # Docker Deep Dive — Project Guide (based on repository)
 
 This document maps the repository's project folders to Docker Deep Dive concepts and provides step-by-step implementation, run instructions, safety guardrails, troubleshooting tips, prerequisites, and optional monitoring/plotting instructions. It synthesizes the course slide topics (attached) into practical, repository-specific guidance.
