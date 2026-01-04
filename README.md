@@ -265,7 +265,9 @@ tar -czf wp-content-backup.tar.gz wp-content/
 
 **Note**: This setup is designed for development. For production, consider:
 
-- Using specific version tags instead of `latest`
+- Using specific version tags instead of `latest` (e.g., `wordpress:6.4`, `mysql:8.0.35`, `phpmyadmin:5.2`)
+  - Update the `image:` fields in `docker-compose.yml` to use specific versions
+  - Example: `image: wordpress:6.4-apache` instead of `image: wordpress:latest`
 - Setting up SSL/TLS certificates
 - Implementing proper security measures
 - Using managed database services

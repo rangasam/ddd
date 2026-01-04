@@ -14,6 +14,11 @@ services:
     networks:
       - wordpress_network
     command: '--default-authentication-plugin=mysql_native_password'
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   # WordPress service
   wordpress:
@@ -21,7 +26,8 @@ services:
     container_name: ddd_wordpress
     restart: unless-stopped
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     ports:
       - "${WORDPRESS_PORT:-8080}:80"
     environment:
@@ -41,7 +47,8 @@ services:
     container_name: ddd_phpmyadmin
     restart: unless-stopped
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     ports:
       - "${PHPMYADMIN_PORT:-8081}:80"
     environment:
