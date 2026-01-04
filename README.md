@@ -61,6 +61,26 @@ This command will:
 
 ## Usage
 
+### Using Make Commands (Recommended)
+
+If you have `make` installed, you can use convenient shortcuts:
+
+```bash
+# Start the environment
+make up
+
+# Stop the environment
+make down
+
+# View logs
+make logs
+
+# See all available commands
+make help
+```
+
+### Using Docker Compose Directly
+
 ### Starting the Environment
 
 ```bash
