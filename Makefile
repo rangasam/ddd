@@ -1,5 +1,16 @@
 .PHONY: help up down restart logs clean backup restore shell status
 
+# Load environment variables from .env if it exists
+ifneq (,$(wildcard ./.env))
+    include .env
+    export
+endif
+
+# Set defaults if not provided
+MYSQL_PASSWORD ?= wordpress
+MYSQL_USER ?= wordpress
+MYSQL_DATABASE ?= wordpress
+
 # Default target
 help:
 	@echo "Docker Deep Dive - Available Commands"
@@ -64,7 +75,7 @@ clean:
 backup:
 	@mkdir -p backups
 	@echo "Creating database backup..."
-	@docker exec -e MYSQL_PWD=wordpress ddd_mysql mysqldump -u wordpress wordpress > backups/backup-$$(date +%Y%m%d-%H%M%S).sql
+	@docker exec -e MYSQL_PWD=$(MYSQL_PASSWORD) ddd_mysql mysqldump -u $(MYSQL_USER) $(MYSQL_DATABASE) > backups/backup-$$(date +%Y%m%d-%H%M%S).sql
 	@echo "✅ Backup created in backups/"
 
 # Restore database
@@ -74,7 +85,7 @@ restore:
 		exit 1; \
 	fi
 	@echo "Restoring database from $(FILE)..."
-	@docker exec -i -e MYSQL_PWD=wordpress ddd_mysql mysql -u wordpress wordpress < $(FILE)
+	@docker exec -i -e MYSQL_PWD=$(MYSQL_PASSWORD) ddd_mysql mysql -u $(MYSQL_USER) $(MYSQL_DATABASE) < $(FILE)
 	@echo "✅ Database restored"
 
 # Open shell in WordPress container
@@ -83,7 +94,7 @@ shell-wp:
 
 # Open MySQL shell
 shell-db:
-	docker exec -it -e MYSQL_PWD=wordpress ddd_mysql mysql -u wordpress wordpress
+	docker exec -it -e MYSQL_PWD=$(MYSQL_PASSWORD) ddd_mysql mysql -u $(MYSQL_USER) $(MYSQL_DATABASE)
 
 # Show container status
 status:

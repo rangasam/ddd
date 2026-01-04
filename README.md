@@ -225,15 +225,35 @@ docker compose up -d
 
 ### Backup Database
 
+Using default credentials (wordpress/wordpress):
+
 ```bash
 docker exec -e MYSQL_PWD=wordpress ddd_mysql mysqldump -u wordpress wordpress > backup.sql
 ```
 
+Or use your configured credentials from `.env`:
+
+```bash
+docker exec -e MYSQL_PWD=${MYSQL_PASSWORD} ddd_mysql mysqldump -u ${MYSQL_USER} ${MYSQL_DATABASE} > backup.sql
+```
+
+**Note**: The Makefile's `make backup` command automatically uses your configured credentials.
+
 ### Restore Database
+
+Using default credentials:
 
 ```bash
 docker exec -i -e MYSQL_PWD=wordpress ddd_mysql mysql -u wordpress wordpress < backup.sql
 ```
+
+Or use your configured credentials:
+
+```bash
+docker exec -i -e MYSQL_PWD=${MYSQL_PASSWORD} ddd_mysql mysql -u ${MYSQL_USER} ${MYSQL_DATABASE} < backup.sql
+```
+
+**Note**: The Makefile's `make restore FILE=backup.sql` command automatically uses your configured credentials.
 
 ### Backup WordPress Files
 
