@@ -1,0 +1,13 @@
+{
+  "name": "web-db-app",
+  "version": "1.0.0",
+  "description": "Web app with database",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "pg": "^8.11.0"
+  }
+}
