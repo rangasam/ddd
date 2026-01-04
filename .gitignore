@@ -1,48 +1,84 @@
-# Wordpress - ignore core, configuration, examples, uploads and logs.
-# https://github.com/github/gitignore/blob/main/WordPress.gitignore
+# Docker Deep Dive - Git Ignore
 
-# Core
-#
-# Note: if you want to stage/commit WP core files
-# you can delete this whole section/until Configuration.
-/wp-admin/
-/wp-content/index.php
-/wp-content/languages
-/wp-content/plugins/index.php
-/wp-content/themes/index.php
-/wp-includes/
-/index.php
-/license.txt
-/readme.html
-/wp-*.php
-/xmlrpc.php
-
-# Configuration
-wp-config.php
-
-# Example themes
-/wp-content/themes/twenty*/
-
-# Example plugin
-/wp-content/plugins/hello.php
-
-# Uploads
-/wp-content/uploads/
-
-# Log files
+# Logs
 *.log
+logs/
 
-# htaccess
-/.htaccess
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.swp
+*.swo
+*~
 
-# All plugins
-#
-# Note: If you wish to whitelist plugins,
-# uncomment the next line
-#/wp-content/plugins
+# OS files
+.DS_Store
+Thumbs.db
+.DS_Store?
+._*
 
-# All themes
-#
-# Note: If you wish to whitelist themes,
-# uncomment the next line
-#/wp-content/themes
+# IDE
+.vscode/
+.idea/
+*.sublime-*
+.project
+.settings/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# Database
+*.sqlite
+*.db
+*.sql
+
+# Docker volumes (if testing locally)
+data/
+volumes/
+
+# Build artifacts
+dist/
+build/
+out/
+target/
+
+# Test coverage
+coverage/
+.nyc_output/
+htmlcov/
+.coverage
+*.cover
+
+# Secrets and sensitive data
+secrets/
+*.key
+*.pem
+*.crt
+
+# Backup files
+*.bak
+*.backup
