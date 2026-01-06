@@ -291,6 +291,14 @@ The attached slides in `docker-deep-dive-2023/` folders contain deep dives on ar
 
 ---
 
+## Lab session artifacts (session commands & outputs)
+
+A separate file with concrete commands and trimmed outputs from the interactive lab session has been added to this repository as `PROJECT-LAB-SESSION.md`. It contains the exact build/run/inspect examples and image-cleanup steps captured during the session (including the git-build auth failure example and the dangling image removal flow). Use that as a quick copy/paste reference while performing the labs.
+
+Path: `PROJECT-LAB-SESSION.md`
+
+If you prefer, I can merge the most important snippets from `PROJECT-LAB-SESSION.md` directly into the per-project sections above (node-app and multi-stage) so the master guide is fully self-contained. Say "merge lab outputs into guide" and I'll integrate and update the todo list.
+
 If you want, I can:
 - Merge this guide into the main `README.md` (resolving the existing conflict by preferring this content).
 - Add the plotting scripts (`tools/plot_stats.py`) and the collector script and test them.
