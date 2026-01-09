@@ -305,3 +305,72 @@ If you want, I can:
 - Create per-folder small README walkthroughs with exact ports and sample responses.
 
 Generated: 2026-01-04
+
+---
+
+## Git / GitHub quick reference (common update workflow)
+
+These are the common commands used during the lab to check status, create commits and push updates to GitHub. Keep them handy when working through the exercises.
+
+1) Check local status and branch
+
+```zsh
+# show unstaged/staged files in a concise format
+git status --porcelain
+
+# show current branch
+git branch --show-current
+
+# show configured remotes
+git remote -v
+
+# show recent commits (compact)
+git log --oneline -n 5
+```
+
+2) Stage and commit changes
+
+```zsh
+# stage all changes (be careful; review with git status first)
+git add -A
+
+# commit with a short, descriptive message
+git commit -m "docs: update node-app README with lab outputs"
+```
+
+3) Push the current branch to origin
+
+```zsh
+# push main branch to origin
+git push origin main
+
+# get the short commit id for verification
+git rev-parse --short HEAD
+```
+
+4) Handling an accidentally added embedded repository
+
+If you see a gitlink (mode 160000) for a nested folder (an embedded repo), it means a repository was added inside this one. Decide whether you intended a submodule or not.
+
+- To remove the nested repo from the index (keep files locally):
+
+```zsh
+# remove from index only (keeps local copy)
+git rm --cached gsd
+git commit -m "chore: remove embedded repo from index"
+git push origin main
+```
+
+- To add it as a proper submodule (preferred if it is a separate project you want to track):
+
+```zsh
+# replace <url> with the remote url for the gsd repository
+git submodule add <url> gsd
+git commit -m "chore: add gsd as submodule"
+git push origin main
+```
+
+Notes & safety
+- Avoid committing secrets or credentials; use `.gitignore` to exclude sensitive files.
+- Prefer small, focused commits with descriptive messages.
+- If you accidentally add large binary files or nested repos, fix them before pushing to keep the upstream history clean.

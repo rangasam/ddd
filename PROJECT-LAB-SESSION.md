@@ -140,3 +140,47 @@ Notes and troubleshooting
 ---
 
 If you'd like, I can merge the important snippets above back into `PROJECT-GUIDE.md` in the appropriate sections (compose, node-app, multi-stage) so the master guide contains these exact session outputs. Say "merge lab outputs" and I'll integrate them and mark the todo progress accordingly.
+
+---
+
+## Git / GitHub quick commands (copy/paste)
+
+Use these commands during the lab to verify status, commit and push changes to GitHub. Replace messages and branch names as needed.
+
+```zsh
+# quick status and branch
+git status --porcelain
+git branch --show-current
+git remote -v
+
+# recent commits
+git log --oneline -n 5
+
+# stage all changes and commit
+git add -A
+git commit -m "docs: update READMEs with lab outputs"
+
+# push current branch to origin (push main as example)
+git push origin main
+
+# confirm current commit
+git rev-parse --short HEAD
+```
+
+Handling an accidentally added nested repository (gitlink)
+
+```zsh
+# remove nested repo from index but keep local files
+git rm --cached gsd
+git commit -m "chore: remove embedded repo from index"
+git push origin main
+
+# or add it as a proper submodule (if intended)
+# git submodule add <url> gsd
+# git commit -m "chore: add gsd as submodule"
+# git push origin main
+```
+
+Notes:
+- Avoid committing secrets. Add sensitive files to `.gitignore` first.
+- Use small, focused commits with clear messages.
