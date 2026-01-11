@@ -1029,6 +1029,7 @@ git push origin main
 - **Official Docker Docs:** https://docs.docker.com/
 - **Docker Hub:** https://hub.docker.com/
 - **Course Slides:** `docker-deep-dive-2023/` folder
+- **Terminal Configuration:** [docs/terminal-prompt-configuration.md](docs/terminal-prompt-configuration.md)
 
 ### Pre-built Images
 

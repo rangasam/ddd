@@ -5,10 +5,9 @@ This directory contains educational resources for learning Docker concepts.
 ## Documentation Files
 
 - **dockerfile-best-practices.md**: Writing efficient and secure Dockerfiles
-- **docker-compose-guide.md**: Orchestrating multi-container applications
 - **networking.md**: Understanding Docker networking
 - **volumes.md**: Data persistence and management
-- **security.md**: Container security best practices
+- **terminal-prompt-configuration.md**: Configure terminal prompt to show only current directory name
 
 ## Learning Path
 
