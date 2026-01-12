@@ -7,6 +7,7 @@ This directory contains educational resources for learning Docker concepts.
 - **dockerfile-best-practices.md**: Writing efficient and secure Dockerfiles
 - **networking.md**: Understanding Docker networking
 - **volumes.md**: Data persistence and management
+- **docker-swarm-guide.md**: Complete guide to Docker Swarm clustering and orchestration
 - **terminal-prompt-configuration.md**: Configure terminal prompt to show only current directory name
 
 ## Learning Path

@@ -21,6 +21,7 @@ This repository contains practical examples, labs, and comprehensive documentati
   - [Dockerfile Best Practices](#dockerfile-best-practices)
   - [Networking](#networking)
   - [Volumes & Data Management](#volumes)
+  - [Docker Swarm](#docker-swarm)
 - [Exercises](#exercises)
 - [Essential Commands](#essential-commands)
 - [Safety & Security](#safety-and-security)
@@ -491,6 +492,40 @@ docker network connect my-network container-name
 docker network disconnect my-network container-name
 docker network rm my-network
 docker network prune
+```
+
+---
+
+### Docker Swarm
+
+Docker Swarm is Docker's native clustering and orchestration solution. For comprehensive documentation on:
+
+- Swarm architecture (managers, workers, Raft consensus)
+- Multi-node setup with Multipass
+- Security (TLS, autolock, token rotation)
+- High availability and best practices
+- Complete command reference
+- Swarm vs Kubernetes comparison
+
+See the **[Docker Swarm Guide](docs/docker-swarm-guide.md)** for detailed instructions and examples.
+
+**Quick Start:**
+
+```bash
+# Initialize swarm
+docker swarm init --advertise-addr <IP>
+
+# Get join token
+docker swarm join-token worker
+
+# Join as worker
+docker swarm join --token <TOKEN> <IP>:2377
+
+# List nodes (from manager)
+docker node ls
+
+# Deploy service
+docker service create --name web --replicas 3 -p 80:80 nginx
 ```
 
 ---
