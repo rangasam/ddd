@@ -17,7 +17,7 @@ Setup (one-time)
 
 ```zsh
 # Enable VS Code terminal command logging for this repository
-source "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Data/Programs/Projects/Docker/ddd/tools/command_logger.zsh"
+source "$HOME/Developer/github/rangasam/ddd/tools/command_logger.zsh"
 ```
 
 3. Reload your shell or restart the VS Code terminal:
