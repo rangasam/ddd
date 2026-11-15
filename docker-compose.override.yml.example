@@ -1,0 +1,53 @@
+# Docker Compose Override Example
+# 
+# Copy this file to docker-compose.override.yml to customize your setup
+# without modifying the main docker-compose.yml file.
+#
+# Usage:
+#   cp docker-compose.override.yml.example docker-compose.override.yml
+#   # Edit docker-compose.override.yml with your customizations
+#   docker compose up -d
+#
+# Docker Compose will automatically merge this with docker-compose.yml
+
+services:
+  wordpress:
+    # Example: Add custom PHP configuration
+    # volumes:
+    #   - ./custom-php.ini:/usr/local/etc/php/conf.d/custom.ini
+
+    # Example: Install additional PHP extensions
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile.custom
+
+    # Example: Change memory limits
+    # environment:
+    #   - PHP_MEMORY_LIMIT=512M
+
+  db:
+    # Example: Expose MySQL port to host (be careful in production!)
+    # ports:
+    #   - "3306:3306"
+
+    # Example: Custom MySQL configuration
+    # volumes:
+    #   - ./custom-mysql.cnf:/etc/mysql/conf.d/custom.cnf
+
+  # Example: Add a Redis cache service
+  # redis:
+  #   image: redis:alpine
+  #   container_name: ddd_redis
+  #   restart: unless-stopped
+  #   networks:
+  #     - wordpress_network
+
+  # Example: Add a mail server for testing
+  # mailhog:
+  #   image: mailhog/mailhog
+  #   container_name: ddd_mailhog
+  #   ports:
+  #     - "8025:8025"  # Web interface
+  #     - "1025:1025"  # SMTP server
+  #   networks:
+  #     - wordpress_network
